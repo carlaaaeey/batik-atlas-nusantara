@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batik Atlas Nusantara - Warisan Budaya Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f5f0;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://i.pinimg.com/736x/2c/e5/50/2ce55057db357f4042186f9e814da1f9.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .map-container {
+            background-image: url('https://i.pinimg.com/736x/ce/58/3a/ce583a94b8a7ca8703cb9ef2d3d31ee9.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .batik-card {
+            transition: all 0.3s ease;
+        }
+        
+        .batik-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .active-tab {
+            border-bottom: 3px solid #d97706;
+            color: #d97706;
+            font-weight: 600;
+        }
+        
+        .region-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .region-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-amber-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-archway text-2xl"></i>
+                <span class="text-xl font-bold">Batik Atlas Nusantara</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#beranda" class="hover:text-amber-200 transition">Beranda</a>
+                <a href="#peta" class="hover:text-amber-200 transition">Peta Interaktif</a>
+                <a href="#galeri" class="hover:text-amber-200 transition">Galeri Motif</a>
+                <a href="#referensi" class="hover:text-amber-200 transition">Referensi</a>
+            </div>
+            <button class="md:hidden text-xl" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-amber-800 py-2" id="mobile-menu">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="#beranda" class="hover:text-amber-200 transition">Beranda</a>
+                <a href="#peta" class="hover:text-amber-200 transition">Peta Interaktif</a>
+                <a href="#galeri" class="hover:text-amber-200 transition">Galeri Motif</a>
+                <a href="#referensi" class="hover:text-amber-200 transition">Referensi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Keindahan Batik Nusantara</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Menjelajahi warisan budaya Indonesia melalui keindahan motif batik dari berbagai daerah</p>
+            <a href="#peta" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-medium transition inline-block">Jelajahi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold text-amber-900 mb-6">Batik: Warisan Budaya Dunia</h2>
+                    <p class="text-gray-700 mb-4">Batik Indonesia telah diakui oleh UNESCO sebagai Warisan Kemanusiaan untuk Budaya Lisan dan Nonbendawi (Masterpieces of the Oral and Intangible Heritage of Humanity) pada 2 Oktober 2009.</p>
+                    <p class="text-gray-700 mb-4">Setiap goresan canting dan setiap motif batik menyimpan cerita, filosofi, serta identitas budaya daerah asalnya. Dari motif keraton yang sakral hingga batik pesisir yang dinamis, batik adalah cerminan keragaman budaya Indonesia.</p>
+                    <p class="text-gray-700">Melalui Batik Atlas Nusantara, kami mengajak Anda untuk mengenal lebih dalam kekayaan motif batik dari berbagai penjuru tanah air.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://www.lines.id/wp-content/uploads/2022/10/Motif-Batik.jpg" alt="Motif Batik Indonesia" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section id="peta" class="py-16 map-container text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Peta Interaktif Batik Nusantara</h2>
+            
+            <div class="bg-white bg-opacity-90 rounded-xl p-6 shadow-lg">
+                <div class="flex overflow-x-auto pb-2 mb-6 space-x-4">
+                    <button onclick="showBatik('jawa')" class="region-btn bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-medium transition whitespace-nowrap active-tab">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Jawa
+                    </button>
+                    <button onclick="showBatik('bali')" class="region-btn bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-medium transition whitespace-nowrap">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Bali
+                    </button>
+                    <button onclick="showBatik('papua')" class="region-btn bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-full font-medium transition whitespace-nowrap">
+                        <i class="fas fa-map-marker-alt mr-2"></i>Papua
+                    </button>
+                </div>
+                
+                <div id="batik-content" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Jawa Batik -->
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md" data-region="jawa">
+                        <img src="https://budaya.jogjaprov.go.id/view_image/view/4254/Filosofi_batik_kawung.width-800.jpg" alt="Batik Kawung" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Kawung</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Yogyakarta</p>
+                            <p class="text-gray-700 mb-4">Motif tertua yang dulunya eksklusif untuk keluarga kerajaan Mataram, melambangkan kesucian dan keadilan.</p>
+                            <button onclick="showDetail('kawung')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md" data-region="jawa">
+                        <img src="https://asset.kompas.com/crops/ZkxTqKaujMavWy3aZSh1HV73LR8=/0x0:0x0/1200x800/data/photo/2021/03/26/605d16d593572.png" alt="Batik Mega Mendung" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Mega Mendung</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Cirebon</p>
+                            <p class="text-gray-700 mb-4">Dipengaruhi budaya Tiongkok, menyimbolkan awan sebagai pengayom dan ketabahan hidup.</p>
+                            <button onclick="showDetail('mega-mendung')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md" data-region="jawa">
+                        <img src="https://cdn.shopify.com/s/files/1/0428/0965/5452/files/00c26cdb40572b85458472804d579f35.jpg?v=1704128001" alt="Batik Parang" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Parang</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Solo</p>
+                            <p class="text-gray-700 mb-4">Motif sakral yang melambangkan keberanian dan semangat tak pernah menyerah.</p>
+                            <button onclick="showDetail('parang')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md" data-region="jawa">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQger4xgiV2Nf6KN3RvNRSp_KTUH1AGv0lyBQ&s" alt="Batik Jlamprang" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Jlamprang</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Pekalongan</p>
+                            <p class="text-gray-700 mb-4">Terpengaruh budaya Arab dan India, melambangkan keberagaman dan kebebasan berekspresi.</p>
+                            <button onclick="showDetail('jlamprang')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md" data-region="jawa">
+                        <img src="https://awsimages.detik.net.id/community/media/visual/2023/10/02/batik-gentongan-madura_169.jpeg?w=1200" alt="Batik Gentongan" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Gentongan</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Madura</p>
+                            <p class="text-gray-700 mb-4">Dilukis menggunakan teknik tulis di atas gentong, simbol kehidupan yang dinamis.</p>
+                            <button onclick="showDetail('gentongan')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md" data-region="jawa">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0NRqaeCWVouKKjEWHP178sBD5kYpimYlQmA&s" alt="Batik Surosowan" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Surosowan</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Banten</p>
+                            <p class="text-gray-700 mb-4">Terinspirasi dari Keraton Surosowan, melambangkan kejayaan dan pusat kekuasaan.</p>
+                            <button onclick="showDetail('surosowan')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Bali Batik -->
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md hidden" data-region="bali">
+                        <img src="https://sintesakonveksi.com/info/wp-content/uploads/2021/02/Batik-flora-dan-fauna-7.jpg" alt="Batik Ulamsari Mas" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Ulamsari Mas</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Bali</p>
+                            <p class="text-gray-700 mb-4">Motif ikan dan udang yang melambangkan kesuburan dan kemakmuran dalam budaya Bali.</p>
+                            <button onclick="showDetail('ulamsari')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Papua Batik -->
+                    <div class="batik-card bg-white rounded-lg overflow-hidden shadow-md hidden" data-region="papua">
+                        <img src="https://cdn.rri.co.id/berita/Bovendigoel/o/1715931859243-data.jpeg/c1dkb3uzy1d4igl.webp" alt="Batik Cendrawasih" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-amber-900 mb-2">Batik Cendrawasih</h3>
+                            <p class="text-gray-600 mb-1"><i class="fas fa-map-pin text-amber-600 mr-2"></i>Papua</p>
+                            <p class="text-gray-700 mb-4">Motif burung endemik Papua yang melambangkan keindahan dan kebebasan.</p>
+                            <button onclick="showDetail('cendrawasih')" class="text-amber-600 hover:text-amber-800 font-medium transition">Selengkapnya →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Batik Detail Modal -->
+    <div id="batik-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h2 id="modal-title" class="text-2xl font-bold text-amber-900"></h2>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="flex flex-col md:flex-row gap-6">
+                    <div class="md:w-1/2">
+                        <img id="modal-image" src="" alt="" class="w-full rounded-lg shadow-md">
+                        <div id="modal-map" class="mt-4 rounded-lg overflow-hidden shadow-md"></div>
+
+                    </div>
+                    <div class="md:w-1/2">
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-amber-800 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Daerah Asal</h3>
+                            <p id="modal-region" class="text-gray-700"></p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-amber-800 mb-2"><i class="fas fa-brain mr-2"></i>Makna Filosofis</h3>
+                            <p id="modal-meaning" class="text-gray-700"></p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-amber-800 mb-2"><i class="fas fa-history mr-2"></i>Sejarah Singkat</h3>
+                            <p id="modal-history" class="text-gray-700"></p>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold text-amber-800 mb-2"><i class="fas fa-tshirt mr-2"></i>Penggunaan</h3>
+                            <p id="modal-usage" class="text-gray-700"></p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-lg font-semibold text-amber-800 mb-2"><i class="fas fa-eye mr-2"></i>Ciri Visual</h3>
+                            <p id="modal-visual" class="text-gray-700"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <section id="galeri" class="py-16 bg-amber-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-900 mb-12">Galeri Motif Batik Nusantara</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://budaya.jogjaprov.go.id/view_image/view/4254/Filosofi_batik_kawung.width-800.jpg" alt="Batik Kawung" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Kawung</h3>
+                        <p class="text-sm text-gray-600">Yogyakarta</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://asset.kompas.com/crops/ZkxTqKaujMavWy3aZSh1HV73LR8=/0x0:0x0/1200x800/data/photo/2021/03/26/605d16d593572.png" alt="Batik Mega Mendung" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Mega Mendung</h3>
+                        <p class="text-sm text-gray-600">Cirebon</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://cdn.shopify.com/s/files/1/0428/0965/5452/files/00c26cdb40572b85458472804d579f35.jpg?v=1704128001" alt="Batik Parang" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Parang</h3>
+                        <p class="text-sm text-gray-600">Solo</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQger4xgiV2Nf6KN3RvNRSp_KTUH1AGv0lyBQ&s" alt="Batik Jlamprang" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Jlamprang</h3>
+                        <p class="text-sm text-gray-600">Pekalongan</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://awsimages.detik.net.id/community/media/visual/2023/10/02/batik-gentongan-madura_169.jpeg?w=1200" alt="Batik Gentongan" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Gentongan</h3>
+                        <p class="text-sm text-gray-600">Madura</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://sintesakonveksi.com/info/wp-content/uploads/2021/02/Batik-flora-dan-fauna-7.jpg" alt="Batik Ulamsari Mas" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Ulamsari Mas</h3>
+                        <p class="text-sm text-gray-600">Bali</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0NRqaeCWVouKKjEWHP178sBD5kYpimYlQmA&s" alt="Batik Surosowan" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Surosowan</h3>
+                        <p class="text-sm text-gray-600">Banten</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item bg-white rounded-lg overflow-hidden shadow-md">
+                    <img src="https://cdn.rri.co.id/berita/Bovendigoel/o/1715931859243-data.jpeg/c1dkb3uzy1d4igl.webp" alt="Batik Cendrawasih" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold text-amber-900">Batik Cendrawasih</h3>
+                        <p class="text-sm text-gray-600">Papua</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section id="referensi" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-amber-900 mb-12">Sumber & Referensi</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-amber-800 mb-4">Buku</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-book text-amber-600 mr-2"></i>Heringa, R. (2014). <em>Fabric of Tradition: Batik of Indonesia</em>. The Pepin Press.</li>
+                        <li><i class="fas fa-book text-amber-600 mr-2"></i>Kerlogue, F. (2004). <em>Batik: Design, Style & History</em>. Thames & Hudson.</li>
+                    </ul>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-amber-800 mb-4">Museum</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-landmark text-amber-600 mr-2"></i>Museum Batik Yogyakarta</li>
+                        <li><i class="fas fa-landmark text-amber-600 mr-2"></i>Museum Tekstil Jakarta</li>
+                        <li><i class="fas fa-landmark text-amber-600 mr-2"></i>Museum Batik Pekalongan</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-amber-800 mb-4">Website Resmi</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><i class="fas fa-globe text-amber-600 mr-2"></i>Kementerian Pendidikan dan Kebudayaan RI - <a href="https://kebudayaan.kemdikbud.go.id" class="text-amber-600 hover:underline" target="_blank">kebudayaan.kemdikbud.go.id</a></li>
+                        <li><i class="fas fa-globe text-amber-600 mr-2"></i>UNESCO - <a href="https://ich.unesco.org" class="text-amber-600 hover:underline" target="_blank">ich.unesco.org</a></li>
+                        <li><i class="fas fa-globe text-amber-600 mr-2"></i>Budaya Jogja - <a href="https://budaya.jogjaprov.go.id" class="text-amber-600 hover:underline" target="_blank">budaya.jogjaprov.go.id</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-archway text-2xl"></i>
+                        <span class="text-xl font-bold">Batik Atlas Nusantara</span>
+                    </div>
+                    <p class="mt-2 text-amber-200">Melestarikan Warisan Budaya Indonesia</p>
+                </div>
+                <p class="mt-2 text-amber-200">Oleh Carla Gustav</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-amber-200 hover:text-white text-xl transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-amber-200 hover:text-white text-xl transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-amber-200 hover:text-white text-xl transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-amber-200 hover:text-white text-xl transition"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="border-t border-amber-800 mt-6 pt-6 text-center text-amber-200">
+                <p>&copy; 2025 Batik Atlas Nusantara. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Region Filter
+        function showBatik(region) {
+            // Update active tab
+            const buttons = document.querySelectorAll('.region-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-tab');
+                if (btn.textContent.includes(region.charAt(0).toUpperCase() + region.slice(1))) {
+                    btn.classList.add('active-tab');
+                }
+            });
+            
+            // Show/hide batik cards
+            const cards = document.querySelectorAll('.batik-card');
+            cards.forEach(card => {
+                if (card.dataset.region === region) {
+                    card.classList.remove('hidden');
+                } else if (region === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Batik Detail Data
+        const batikData = {
+            'kawung': {
+                title: 'Batik Kawung',
+                image: 'https://budaya.jogjaprov.go.id/view_image/view/4254/Filosofi_batik_kawung.width-800.jpg',
+                region: 'Yogyakarta',
+                meaning: 'Melambangkan kesucian, keadilan, dan kekuasaan spiritual. Motif lingkaran seperti buah kolang-kaling yang tersusun rapi menggambarkan kesempurnaan dan keharmonisan.',
+                history: 'Salah satu motif tertua yang dulunya eksklusif untuk keluarga kerajaan Mataram. Pada masa lalu, hanya raja dan keluarganya yang boleh mengenakan batik dengan motif ini.',
+                usage: 'Dipakai oleh raja dan bangsawan pada masa lalu, sekarang populer untuk upacara formal seperti pernikahan dan acara kenegaraan.',
+            visual: 'Pola lingkaran simetris seperti buah kolang-kaling yang tersusun geometris dengan warna tradisional seperti coklat, hitam, dan putih.',
+            mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d505883.0804930031!2d110.09392296626066!3d-7.872917717250679!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787bd5b6bc5%3A0x6d1b92b2cac8b3f0!2sDaerah%20Istimewa%20Yogyakarta!5e0!3m2!1sid!2sid!4v1747385848135!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+
+            },
+            'mega-mendung': {
+                title: 'Batik Mega Mendung',
+                image: 'https://asset.kompas.com/crops/ZkxTqKaujMavWy3aZSh1HV73LR8=/0x0:0x0/1200x800/data/photo/2021/03/26/605d16d593572.png',
+                region: 'Cirebon',
+                meaning: 'Menyimbolkan ketabahan, kesabaran, dan ketenangan batin. Motif awan menggambarkan pengayoman dan perlindungan dari Yang Maha Kuasa.',
+                history: 'Dipengaruhi budaya Tiongkok melalui hubungan dagang dan perkawinan antara bangsawan Cirebon dengan Tionghoa. Motif ini berkembang pada abad ke-16.',
+                usage: 'Batik pesisir yang umum digunakan dalam kegiatan formal dan upacara adat. Juga populer sebagai busana sehari-hari yang elegan.',
+                visual: 'Garis awan berlapis dengan gradasi warna biru, merah, dan ungu yang menyerupai langit mendung.',
+                                mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507145.09712114575!2d108.25493937400513!3d-6.761188597036058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1d0f69dbc5d5%3A0x301e8f1fc28ba20!2sKabupaten%20Cirebon%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1747382504420!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+            },
+            'parang': {
+                title: 'Batik Parang',
+                image: 'https://cdn.shopify.com/s/files/1/0428/0965/5452/files/00c26cdb40572b85458472804d579f35.jpg?v=1704128001',
+                region: 'Solo',
+                meaning: 'Melambangkan keberanian, kekuatan, dan semangat yang tak pernah menyerah. Motif ini juga dianggap sebagai simbol kesinambungan dan kontinuitas hidup.',
+                history: 'Motif sakral yang dulunya hanya dikenakan oleh bangsawan keraton Surakarta. Konon diciptakan oleh Panembahan Senopati saat bertapa di pantai selatan Jawa.',
+                usage: 'Digunakan dalam pernikahan adat Jawa, upacara keraton, dan acara penting lainnya. Juga populer sebagai busana formal.',
+                visual: 'Garis diagonal tajam seperti ombak memanjang yang tersusun rapi, biasanya dalam warna coklat soga dan hitam.',
+            mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63282.3137873956!2d110.77752618716052!3d-7.559207060215611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a16627ad11ab1%3A0xe7fe4e0454bc3095!2sSurakarta%2C%20Kota%20Surakarta%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1747384518458!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+            },
+            'jlamprang': {
+                title: 'Batik Jlamprang',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQger4xgiV2Nf6KN3RvNRSp_KTUH1AGv0lyBQ&s',
+                region: 'Pekalongan',
+                meaning: 'Melambangkan keberagaman dan kebebasan berekspresi. Motif ini mencerminkan sifat masyarakat pesisir yang terbuka terhadap berbagai pengaruh budaya.',
+                history: 'Terpengaruh budaya Arab dan India melalui jalur dagang pada abad ke-19. Nama "Jlamprang" berasal dari kata "lampah" yang berarti jalan, menggambarkan mobilitas masyarakat pesisir.',
+                usage: 'Batik niaga dan harian di daerah pesisir. Populer sebagai busana santai maupun formal dengan warna-warna cerah.',
+            visual: 'Motif geometris dengan pola bintang atau bunga yang penuh warna (biru, merah, hijau) dengan latar putih atau krem.',
+                        mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253422.24595842502!2d109.47591048498768!3d-7.041851537175977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e701f05bd8d152f%3A0x3027a76e352bb70!2sKabupaten%20Pekalongan%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1747384912923!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+            },
+            'gentongan': {
+                title: 'Batik Gentongan',
+                image: 'https://awsimages.detik.net.id/community/media/visual/2023/10/02/batik-gentongan-madura_169.jpeg?w=1200',
+                region: 'Madura',
+                meaning: 'Melambangkan kehidupan yang dinamis dan penuh semangat. Motif ini mencerminkan karakter masyarakat Madura yang tegas dan berwarna-warni.',
+                history: 'Dinamakan "Gentongan" karena proses pewarnaannya yang menggunakan gentong (tempayan besar). Dulunya menjadi simbol status sosial di Madura.',
+                usage: 'Dikenakan saat acara adat dan penting oleh tokoh masyarakat. Juga populer sebagai busana pesta dan pernikahan.',
+                visual: 'Warna mencolok (merah, kuning, hijau) dengan motif besar dan tegas. Biasanya memiliki latar berwarna cerah dengan motif flora dan fauna yang berani.',
+                mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1013653.2347825435!2d112.73817212764936!3d-7.058190434294754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd9d3445c8704d1%3A0x5a2751be1dfcce84!2sPulau%20Madura!5e0!3m2!1sid!2sid!4v1747385015877!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+                
+            },
+            'ulamsari': {
+                title: 'Batik Ulamsari Mas',
+                image: 'https://sintesakonveksi.com/info/wp-content/uploads/2021/02/Batik-flora-dan-fauna-7.jpg',
+                region: 'Bali',
+                meaning: 'Melambangkan kesuburan, kemakmuran, dan keharmonisan hidup. Motif ikan dan udang menggambarkan hasil laut yang melimpah sebagai berkah dari alam.',
+                history: 'Berkembang sebagai bagian dari tradisi tekstil Bali yang dipengaruhi budaya Hindu. Dipakai dalam upacara keagamaan dan menjadi identitas budaya Bali.',
+                usage: 'Busana tradisi keagamaan Hindu Bali dan acara budaya. Juga populer sebagai souvenir dan oleh-oleh khas Bali.',
+                visual: 'Motif ikan dan udang yang berwarna cerah dengan latar putih atau krem. Biasanya menggunakan warna-warna alam seperti biru, hijau, dan coklat.',
+                                mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1010292.8431138885!2d114.41066561254208!3d-8.454917002912534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd141d3e8100fa1%3A0x24910fb14b24e690!2sBali!5e0!3m2!1sid!2sid!4v1747385264644!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+            },
+            'surosowan': {
+                title: 'Batik Surosowan',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0NRqaeCWVouKKjEWHP178sBD5kYpimYlQmA&s',
+                region: 'Banten',
+                meaning: 'Melambangkan kejayaan, kewibawaan, dan pusat kekuasaan. Motif ini mencerminkan kebesaran Kesultanan Banten pada masa lalu.',
+                history: 'Terinspirasi dari Keraton Surosowan, istana Sultan Maulana Hasanuddin (sultan pertama Kesultanan Banten). Dikembangkan sebagai upaya pelestarian warisan budaya Banten.',
+                usage: 'Batik resmi untuk acara budaya dan pelestarian warisan Kesultanan Banten. Juga digunakan dalam upacara adat dan kegiatan resmi pemerintah daerah.',
+                visual: 'Motif geometris dengan bentuk belah ketupat, lingkaran polos, serta motif daun. Biasanya menggunakan warna-warna tanah seperti coklat, hitam, dan krem.',
+                mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1014937.0436563992!2d105.27910152920589!3d-6.445652660037688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e418ad6c40db999%3A0xbed39aab8b1ab3e9!2sBanten!5e0!3m2!1sid!2sid!4v1747385516628!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+
+            },
+            'cendrawasih': {
+                title: 'Batik Cendrawasih',
+                image: 'https://cdn.rri.co.id/berita/Bovendigoel/o/1715931859243-data.jpeg/c1dkb3uzy1d4igl.webp',
+                region: 'Papua',
+                meaning: 'Melambangkan keindahan, kebebasan, dan identitas Papua. Burung Cendrawasih sebagai simbol keunikan alam dan budaya Papua yang kaya.',
+                history: 'Motif khas Papua yang dikembangkan sebagai bagian dari gerakan pelestarian budaya lokal. Menggambarkan kekayaan alam Papua melalui simbol burung endemiknya.',
+                usage: 'Dipakai dalam tarian tradisional, upacara suku, dan promosi budaya Papua. Juga populer sebagai oleh-oleh khas Papua.',
+                visual: 'Motif burung Cendrawasih dengan ekor panjang dan elemen alam seperti pohon dan bunga. Warna cerah seperti merah, kuning, dan hijau dengan kontras yang kuat.',
+            mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8141852.29884219!2d132.4947545706383!3d-4.8531899527166615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x683b2c04aaff9273%3A0xeba94e9c5eefe673!2sPapua!5e0!3m2!1sid!2sid!4v1747385799221!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+
+            }
+        };
+
+        // Show Batik Detail Modal
+        function showDetail(batikId) {
+            const batik = batikData[batikId];
+            const modal = document.getElementById('batik-modal');
+            
+            document.getElementById('modal-title').textContent = batik.title;
+            document.getElementById('modal-image').src = batik.image;
+            document.getElementById('modal-image').alt = batik.title;
+            document.getElementById('modal-region').textContent = batik.region;
+            document.getElementById('modal-meaning').textContent = batik.meaning;
+            document.getElementById('modal-history').textContent = batik.history;
+            document.getElementById('modal-usage').textContent = batik.usage;
+            document.getElementById('modal-visual').textContent = batik.visual;
+            document.getElementById('modal-map').innerHTML = batik.mapEmbed || '';
+
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('batik-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
